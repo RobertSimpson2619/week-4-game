@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+
+	<meta charset="UTF-8">
+    <title>Crystals</title>
+    <!-- Added link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="jumbotron">
+        <h1 class="text-center">Crystal Game!</h1>
+        <h3 class="text-center">Use the crystals to get the required number!</h3>
+    </div>
+
+    <div class="container">
+
+   		<div class ="row">
+
+			<div class = "col-lg-3">
+				<div class= "panel panel-primary " style ="text-align:center;">
+					<div class ="panel-body">
+					Number To Win:
+					</div>
+					<div class="panel-footer Random-Number">
+						
+					</div>
+					
+				</div>
+			</div>
+
+
+
+			<div class="col-lg-3">
+			
+				<div class= "panel panel-primary " style ="text-align:center;">
+					<div class ="panel-body">
+					Wins:
+					</div>
+					<div class="panel-footer Wins">
+					0
+					</div>
+					
+				</div>
+			</div>
+
+
+		
+			<div class ="col-lg-3">
+			
+				<div class= "panel panel-primary " style ="text-align:center;">
+					<div class ="panel-body">
+					Losses:
+					</div>
+					<div class="panel-footer Losses">
+					0	
+					</div>
+				</div>
+			</div>
+
+
+					
+			
+			<div class ="col-lg-3">
+			
+				<div class= "panel panel-primary " style ="text-align:center;">
+					<div class ="panel-body">
+					Total Score:
+					</div>
+					<div class="panel-footer Total-Score">
+					0	
+					</div>
+					
+			
+
+   				</div>
+   			</div>
+   			
+   		</div>
+
+   		<div class ="row">
+
+   			<div class = "col-md-3">
+   				
+   				<img id = "blue" src="assets/images/blue.jpg">
+   			</div>
+
+   			<div class ="col-md-3">
+
+   				<img id ="red" src="assets/images/red.jpg">
+   			</div>
+
+   			<div class ="col-md-3">
+
+   				<img id="yellow" src="assets/images/yellow.jpg">
+   			</div>
+
+   			<div class = "col-md-3">
+
+   				<img id ="green" src="assets/images/green.jpg">
+   			</div>
+
+   		</div>
+
+   		<div class="row">
+   			<div class = "btn btn-primary col-md-1 col-md-offset-5" style ="width:15%; text-align: center; margin-bottom:15px;">
+   			Reset
+   			</div>
+   		</div>
+   	</div>
+
+   
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+    	//set variables
+    	var score;
+    	var computerGuess;
+    	var wins = 0;
+    	var losses = 0;
+
+
+    	$("#blue").on("click", function(){
+    		console.log("blue pressed");
+    		var addedScore= $(this).attr("Number");
+    		score = parseInt(score)+parseInt(addedScore);
+    		console.log(score);
+    		$(".Total-Score").html(score);
+
+
+    		if(score==computerGuess)
+    		{
+    			wins++;
+    			$(".Wins").html(wins);
+    			clear();
+    		}
+    		else if(score>computerGuess)
+    		{
+    			losses++;
+    			$(".Losses").html(losses);
+    			clear();
+    		}
+    	});
+
+    	$("#green").on("click", function(){
+    		console.log("green pressed");
+    		var addedScore= $(this).attr("Number");
+    		score = parseInt(score)+parseInt(addedScore);
+    		console.log(score);
+    		$(".Total-Score").html(score);
+
+    			if(score==computerGuess)
+    		{
+    			wins++;
+    			$(".Wins").html(wins);
+    			clear();
+    		}
+    		else if(score>computerGuess)
+    		{
+    			losses++;
+    			$(".Losses").html(losses);
+    			clear();
+    		}
+    	});
+
+    	$("#yellow").on("click", function(){
+    		console.log("yellow pressed");
+    		var addedScore= $(this).attr("Number");
+    		score = parseInt(score)+parseInt(addedScore);
+    		console.log(score);
+    		$(".Total-Score").html(score);
+
+    			if(score==computerGuess)
+    		{
+    			wins++;
+    			$(".Wins").html(wins);
+    			clear();
+    		}
+    		else if(score>computerGuess)
+    		{
+    			losses++;
+    			$(".Losses").html(losses);
+    			clear();
+    		}
+    	});
+
+    	$("#red").on("click", function(){
+    		console.log("red pressed");
+    		var addedScore= $(this).attr("Number");
+    		score = parseInt(score)+parseInt(addedScore);
+    		console.log(score);
+    		$(".Total-Score").html(score);
+
+    			if(score==computerGuess)
+    		{
+    			wins++;
+    			$(".Wins").html(wins);
+    			clear();
+    		}
+    		else if(score>computerGuess)
+    		{
+    			losses++;
+    			$(".Losses").html(losses);
+    			clear();
+    		}
+    	});
+    	$(".btn").on("click", function(){
+    		clear();
+    		reset();
+    	});
+    	//function that sets attributes to crystal images
+
+    	function setAttributes(){
+
+    		$("#green").attr("Number", Math.floor(Math.random()* ((12-1)+1)+1));
+    			
+    			
+    		$("#red").attr("Number", Math.floor(Math.random()* ((12-1)+1)+1));
+    			
+    			
+    		$("#blue").attr("Number", Math.floor(Math.random()* ((12-1)+1)+1));
+
+    			
+    		$("#yellow").attr("Number", Math.floor(Math.random()* ((12-1)+1)+1));
+    			
+    		
+    	}
+
+    	//function that resets game
+    	function clear(){
+    		$(".Random-Number").empty();
+    		
+    		score=0;
+    		computerGuess = Math.floor(Math.random()* ((120-12)+1)+12);
+    		$(".Random-Number").html(computerGuess);
+    		$(".Total-Score").html(score);
+    		setAttributes();
+    	}
+    	function reset(){
+    		wins=0;
+    		losses=0;
+    		$(".Wins").html(wins);
+    		$(".Losses").html(losses);
+
+    	}
+    	clear();
+        
+
+    });
+    </script>
+
+</body>
+
+
+</html>
